@@ -13,8 +13,7 @@
   ;Define a map with the formulae of every function
   {:Linear (fn [x] (+ x 1)) 
    :Square (fn [x] (* x x))}
-  )
- (range -1 1 0.1)
+  ) 
 
 
 (get map-function :Square) ;;Here we have the function back
@@ -47,5 +46,4 @@
             (let [vectorcito (range upper-bound lower-bound 0.100)]
               print vectorcito)
             ;(print "Lower bound mayor a upper bound")
-            ))))
- 
+            )))) 
