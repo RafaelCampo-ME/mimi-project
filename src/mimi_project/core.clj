@@ -2,7 +2,8 @@
   (:gen-class)
   (:use incanter.core)
   (:use incanter.io)
-  ((:use mimi-project.integrar)))
+  (:use mimi-project.integrar)
+  )
 
 (defn -main
   "I don't do a whole lot ... yet."
