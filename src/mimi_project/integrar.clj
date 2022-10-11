@@ -28,7 +28,7 @@
 
 ;;Si puedo establecer usar una funcion dentro de una lista
 
-(defn -main []
+(defn -main-int []
   (println "Please, To compute the area under the curve")
   (print " enter the lower bound") (flush)
   (let 
@@ -48,4 +48,4 @@
               print vectorcito)
             ;(print "Lower bound mayor a upper bound")
             ))))
-(-main)
+ 
