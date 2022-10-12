@@ -11,8 +11,7 @@
 
 (def map-function
   ;Define a map with the formulae of every function
-  {:Linear (fn [x] (+ x 1))
-   :Square (fn [x] (* x x))})
+  {:Linear (fn [x] (+ x 1)) :Square (fn [x] (* x x))})
 
 
 (defn time-series 
@@ -51,18 +50,17 @@
 (defn -main-int []
   (println "Please, To compute the area under the curve")
   (println "enter the lower bound") (flush)
-  (let
-   [lower-bound (read)]
+  (let [lower-bound (read)]
 
     (println lower-bound)
     (println "Now, enter the upper bound") (flush)
     (println "Thank you, the range of values selected is:")
-    (let
-     [upper-bound (read)]
+    (let [upper-bound (read)]
       (println upper-bound)
 
       (cond (> upper-bound lower-bound)
-            ((lazy-seq vectorcito   (range lower-bound upper-bound 0.100)))
+            (let [vectorcito   (range lower-bound upper-bound 0.100)]
+              print vectorcito)
             ;(print "Upper-bound mayor a lower-bound")
             (< upper-bound lower-bound)
             (let [vectorcito (range upper-bound lower-bound 0.100)]
@@ -75,8 +73,7 @@
       (println "1. Square pulse.")
       (println "2. Linear Fucntion.")
       (println "Select the number, please.")
-      (let
-       [function-type (read)]
+      (let [function-type (read)]
         (cond (= function-type 1) (print "Square pulse selected")
               (= function-type 2) (print "Linear function selected"))))))
 
