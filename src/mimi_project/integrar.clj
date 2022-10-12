@@ -25,6 +25,8 @@
 
 
 
+
+
 (defn function-image [sequence]
 ;TODO: Fix this method. Funtion image method must create a list 
   ;with the image of the function (the function evaluated in every
@@ -33,7 +35,7 @@
     ((doseq [n  sequence] (println (+ n 1))))
   ) 
 
-(function-image (range 10))
+(function-image(range 10))
 
 
 (get map-function :Square) ;;Here we have the function back
