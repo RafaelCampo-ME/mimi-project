@@ -22,10 +22,15 @@
     (range lower-bound upper-bound 0.100)
   ) 
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 
 
-(defn function-image [sequence] 
+
+
+(defn function-image [sequence]
+;TODO: Fix this method. Funtion image method must create a list 
+  ;with the image of the function (the function evaluated in every
+  ;point of the time series)
+  
     ((doseq [n  sequence] (println (+ n 1))))
   ) 
 
