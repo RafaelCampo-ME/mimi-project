@@ -4,6 +4,7 @@
   (:use incanter.io)
   (:use mimi-project.integrar)
   )
+  
 
 (defn -main
   "I don't do a whole lot ... yet."
@@ -12,9 +13,7 @@
 
   (read-dataset "/mimi-project/doc/prueba.csv" :header true))
 
-(-main)
-(-main-int)
-
+(-main) 
 
 (defn demo [x y] (* 2 x y))
 (demo 2 3)

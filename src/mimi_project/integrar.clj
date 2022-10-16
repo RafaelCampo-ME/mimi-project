@@ -11,7 +11,7 @@
 
 (def map-function
   ;Define a map with the formulae of every function
-  {:Linear (fn [x] (+ x 1)) :Square (fn [x] (* x x))})
+  {:Linear (fn [x] (+ x 1)) :Square (fn sq [x] (* x x))}) 
 
 
 (defn time-series 
@@ -21,30 +21,51 @@
     (range lower-bound upper-bound 0.100)
   ) 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 
-
 
 (defn function-image [sequence]
 ;This function return the image of the function (the function evaluated in every
 ;point of the time series)
-
-  (for [n  sequence] (+ n 1))
+  (for 
+   [n  sequence] 
+    (apply (get map-function :Square) [n]))
   ) 
+
+
+(defn area-under-curve [sequence]
+;This function return the image of the function (the function evaluated in every
+;point of the time series)
+  (for
+   [n  sequence]
+    (
+     let [in-range (< n (count sequence))]
+      (if in-range (+ (* n 1) n) (area-under-curve))
+    )
+
+ )
+)
+
+(area-under-curve (range 20))
+
+
+
+(defn connect-db []
+  ;;Recursive function in clojure
+  (println "Trying to connect")
+  (let [connected (>= (rand-int 5) 4)]
+    (if connected "connected" (connect-db))))
+
+
+
 
 (function-image(range 20))
 
+ 
+
+(defn get-integral [a]
+
+  )
 
 
-(get map-function :Square) ;;Here we have the function back
-(get map-function :hola2) ;;Here we have the function back
-(map-function :Square) ;;Here we have the function back  
-
-(get {:a 1 :b (fn suma [x] (+ x 1))} :b)
-(defn suma [x] (+ x 1))
-
-(apply  (get {:a 1 :b (fn sumatoria [x] (+ x 1))} :b) [1])
-
-;;Si puedo establecer usar una funcion dentro de una lista
 
 (defn -main-int []
   (println "Please, To compute the area under the curve")
