@@ -40,7 +40,6 @@
      let [in-range (< n (count sequence))]
       (if in-range (+ (* n 1) n) (area-under-curve))
     )
-
  )
 )
 
@@ -52,18 +51,13 @@
   ;;Recursive function in clojure
   (println "Trying to connect")
   (let [connected (>= (rand-int 5) 4)]
-    (if connected "connected" (connect-db))))
+    (if connected "connected" (connect-db)))) 
 
 
 
 
 (function-image(range 20))
 
- 
-
-(defn get-integral [a]
-
-  )
 
 
 
