@@ -31,32 +31,36 @@
   ) 
 
 
-(defn area-under-curve [sequence]
+(defn area-under-curve [image size]
 ;This function return the image of the function (the function evaluated in every
 ;point of the time series)
+  
   (for
-   [n  sequence]
-    (
-     let [in-range (< n (count sequence))]
-      (if in-range (+ (* n 1) n) (area-under-curve))
-    )
- )
-)
+    [n  (range size)]
+    (let [in-range (< n size)] 
+      (cond in-range (nth image n)
+            (== n 0)  "It's a zero"
+            :else     "nothing") 
+    )))
 
-(area-under-curve (range 20))
+(area-under-curve (function-image (range 20)) (count (range 20)) )
+ 
+
+(defn area-integration ([rango] (area-integration rango 0)  )
+([rango intento]
+(let 
+  [ no-rango (== rango intento) 
+    en-rango (<  intento rango)]
+    
+  (cond no-rango (print "ultimo intento" intento) 
+        en-rango  ((println "hola") (area-integration rango (+  intento 1))) 
+        :else (area-integration rango (+  intento 1))))))
+
+(area-integration 10)
+
+(nth imagencita 4)
 
 
-
-(defn connect-db []
-  ;;Recursive function in clojure
-  (println "Trying to connect")
-  (let [connected (>= (rand-int 5) 4)]
-    (if connected "connected" (connect-db)))) 
-
-
-
-
-(function-image(range 20))
 
 
 
