@@ -1,6 +1,7 @@
 
 (ns mimi-project.integrar)
 
+(:author "Rafael Campo")
 ;namespace function names the program
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -11,54 +12,69 @@
 
 (def map-function
   ;Define a map with the formulae of every function
-  {:Linear (fn [x] (+ x 1)) :Square (fn sq [x] (* x x))}) 
+  {:Linear (fn [x] (+ x 1)) :Square (fn sq [x] (* x x))})
 
 
-(defn time-series 
+(defn time-series
   ;;This function compute the time series wich will be 
   ;;use for the integration. 
-  [lower-bound upper-bound]  
-    (range lower-bound upper-bound 0.100)
-  ) 
+  [lower-bound upper-bound]
+  (range lower-bound upper-bound 0.100))
 
 
 (defn function-image [sequence]
 ;This function return the image of the function (the function evaluated in every
 ;point of the time series)
-  (for 
-   [n  sequence] 
-    (apply (get map-function :Square) [n]))
-  ) 
+  (for
+   [n  sequence]
+    (apply (get map-function :Square) [n])))
 
 
 (defn area-under-curve [image size]
 ;This function return the image of the function (the function evaluated in every
 ;point of the time series)
-  
+
   (for
-    [n  (range size)]
-    (let [in-range (< n size)] 
+   [n  (range size)]
+    (let [in-range (< n size)]
       (cond in-range (nth image n)
             (== n 0)  "It's a zero"
-            :else     "nothing") 
-    )))
+            :else     "nothing"))))
 
-(area-under-curve (function-image (range 20)) (count (range 20)) )
- 
+(area-under-curve (function-image (range 20)) (count (range 20)))
 
-(defn area-integration ([rango] (area-integration rango 0)  )
-([rango intento]
-(let 
-  [ no-rango (== rango intento) 
-    en-rango (<  intento rango)]
-    
-  (cond no-rango (print "ultimo intento" intento) 
-        en-rango  ((println "hola") (area-integration rango (+  intento 1))) 
-        :else (area-integration rango (+  intento 1))))))
+
+(defn area-integration ([rango] (area-integration rango 0))
+  ([rango intento]
+   (let
+    [no-rango (== rango intento)
+     en-rango (<  intento rango)]
+
+     (cond no-rango (print "ultimo intento" intento)
+           en-rango  ((println "hola") (area-integration rango (+  intento 1)))
+           :else (area-integration rango (+  intento 1))))))
 
 (area-integration 10)
 
+
+
+
+
 (nth imagencita 4)
+
+
+;;This will be the backbones of my aproximation
+(loop [x 0 result 0]
+  (if (< x 10)
+    (recur (inc  x)
+           (+ result x))
+    result))
+
+
+
+
+
+
 
 
 
