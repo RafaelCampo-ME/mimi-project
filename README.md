@@ -1,6 +1,6 @@
 # mimi-project
 
-FIXME: description
+This is a personal project which objective it's build a simple library for performance mathematical operations
 
 ## Installation
 
@@ -27,6 +27,8 @@ FIXME: listing of options this app accepts.
 ### Any Other Sections
 ### That You Think
 ### Might be Useful
+
+http://jafingerhut.github.io/cheatsheet/clojuredocs/cheatsheet-tiptip-cdocs-summary.html
 
 ## License
 
