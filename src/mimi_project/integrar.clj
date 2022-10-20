@@ -11,7 +11,8 @@
 
 (def map-function
   ;Define a map with the formulae of every function
-  {:Linear (fn [x] (+ x 1)) :Square (fn sq [x] (* x x))})
+  {:Linear (fn [x] (+ x 1)) :Square (fn sq [x] (* x x)) :Sin (fn sin [x] (Math/sin x)) })
+
 
 
 (defn time-series
@@ -21,12 +22,12 @@
   (range lower-bound upper-bound delta-x))
 
 
-(defn function-image [sequence]
+(defn function-image [sequence key]
 ;This function return the image of the function (the function evaluated in every
 ;point of the time series)
   (for
     [n  sequence]
-    (apply (get map-function :Square) [n])))
+    (apply (get map-function key) [n])))
 
 
 (defn riemman-aprox [imagen delta-x]
@@ -39,11 +40,13 @@
       suma))) 
 
 
-(defn -main [lower-bound upper-bound delta-x] 
+(defn -main [lower-bound upper-bound delta-x key] 
   ;;Get the integral of a  quadatic function
   (let [image  (function-image 
-      (time-series lower-bound upper-bound delta-x))]
+      (time-series lower-bound upper-bound delta-x) key)]
     (riemman-aprox image delta-x)    
     ) 
 )
 
+
+ 
