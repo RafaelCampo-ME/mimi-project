@@ -12,4 +12,28 @@
 
 
 
+(def map-function
+  ;Define a map with the formulae of every function
+  {:Linear (fn [x] (+ x 1)) :Square (fn sq [x] (* x x)) :Sin (fn sin [x] (Math/sin x)) })
+
+
+(defn differentiation
+;;This method return a series of points who represents the derivatate 
+;;of the function in every point using the newton formula 
+  [lower-bound upper-bound delta-x] 
+  (let [image-series  (for
+                       [n  (range lower-bound upper-bound delta-x)]
+                        (* 2 n))]
+
+    ) 
+  )
+
+(differentiation 1 2 0.01)
+
+
+
+
+
+
+
 

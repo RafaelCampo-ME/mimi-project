@@ -47,6 +47,3 @@
     (riemman-aprox image delta-x)    
     ) 
 )
-
-
- 
