@@ -1,5 +1,4 @@
 (ns mimi-project.derivar)
-
 (:author "Rafael Campo")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -21,14 +20,24 @@
 ;;This method return a series of points who represents the derivatate 
 ;;of the function in every point using the newton formula 
   [lower-bound upper-bound delta-x] 
-  (let [image-series  (for
-                       [n  (range lower-bound upper-bound delta-x)]
+  (let [image-series  (for [n  (range lower-bound upper-bound delta-x)]
                         (* 2 n))]
+  (loop [ indice 0 
+          derivate []  
+          ]
+    (if (< (+ 1 indice)  (count image-series))
+     (recur (inc indice) 
+            (conj derivate  ( / ( -  (nth image-series (inc  indice )) (nth image-series indice)) delta-x)) 
+            ) 
+      derivate
+      )) 
+    ))
+ 
 
-    ) 
-  )
+ 
+(differentiation 1 2 0.01) 
 
-(differentiation 1 2 0.01)
+
 
 
 
