@@ -23,17 +23,21 @@
   (let [image-series  (for [n  (range lower-bound upper-bound delta-x)]
                         (* 2 n))]
   (loop [ indice 0 
-          derivate []
+          derivate []  
           ]
-    (if (indice < (count image-series))
-       
-      (conj derivate ((* (nth image-series indice) (nth image-series (+ indice 1))) / delta-x)) 
-      )
+    (if (< (+ 1 indice)  (count image-series))
+     (recur (inc indice) 
+            (conj derivate  ( / ( -  (nth image-series (inc  indice )) (nth image-series indice)) delta-x)) 
+            ) 
       derivate
-      )))
+      )) 
+    ))
+ 
 
-
+ 
 (differentiation 1 2 0.01) 
+
+
 
 
 
